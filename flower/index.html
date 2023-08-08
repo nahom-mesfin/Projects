@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order fresh flower delivery in Addis Ababa with Yene-Flower. Choose from a variety of roses, gifts, and more for any occasion.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Buy Fresh Flowers Online - Yene-Flower</title>
+    <style>
+        .logoo {
+            width: 62px;
+            height: auto;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .cart-container {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .cart-icon {
+            width: 50px;
+            height: 50px;
+            background: url('img/cart-logo.png') center/cover no-repeat;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .view-more-btn {
+            background: var(--pink);
+            color: #fff;
+            padding: 1rem 3rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .view-more-btn:hover {
+            background: #333;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .footer .box-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer .box {
+    flex: 1;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center; /* Center the icons */
+    padding: 1rem 0;
+}
+
+.footer .social-icons a {
+    font-size: 2rem;
+    color: #333; /* Default icon color */
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    background: #f1f1f1; /* Light background for the icons */
+    padding: 15px; /* Larger padding for emphasis */
+    border-radius: 50%; /* Make the icons circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-decoration: none;
+    position: relative; /* For pseudo-element effects */
+    overflow: hidden; /* Ensure smooth hover animations */
+}
+
+.footer .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+    transition: all 0.5s ease;
+    z-index: 1;
+    opacity: 0;
+}
+
+.footer .social-icons a:hover::before {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+}
+
+.footer .social-icons a:hover {
+    transform: translateY(-5px) rotate(5deg); /* Cool hover effect with rotation */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+    color: #fff; /* Change icon color on hover */
+}
+
+.footer .social-icons a.instagram:hover {
+    background-color: var(--pink); /* Instagram retains the pink color */
+}
+
+.footer .social-icons a.facebook:hover {
+    background-color: #1877f2; /* Facebook blue */
+}
+
+.footer .social-icons a.tiktok:hover {
+    background-color: #000000; /* TikTok black */
+}
+.comments-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Allow dynamic height */
+    background-color: #f9f9f9; /* Soft background color */
+    padding: 30px; /* Increased padding for a spacious feel */
+    border-radius: 12px; /* Rounded corners for the container */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for more depth */
+}
+
+.comment {
+    position: absolute;
+    background: #fff; /* White background for comments */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for comments */
+    border-radius: 10px;
+    padding: 1.5rem; /* Increased padding for comfort */
+    width: 240px; /* Wider comment boxes */
+    transition: transform 0.3s, z-index 0.3s, background-color 0.3s; /* Transition effects */
+    z-index: 1;
+    margin-left: 160px; /* Move comments to the right */
+}
+
+.comment:nth-child(n) {
+    margin-bottom: 15px; /* Added margin for spacing between comments */
+}
+
+.comment:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    background-color: #ffefef; /* Light background on hover for emphasis */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* Increased space below user info */
+}
+
+.user-img {
+    width: 50px; /* Slightly larger user image */
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ff6b81; /* Border for the user image */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Shadow for the image */
+    margin-right: 0.75rem; /* Space between image and name */
+}
+
+.user-name {
+    font-size: 1.1rem; /* Larger font for names */
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize; /* Capitalize name for style */
+}
+
+.user-comment {
+    font-size: 1rem; /* Slightly larger comment text */
+    color: #555;
+    line-height: 1.5; /* Increased line height for readability */
+    font-style: italic; /* Italic style for comments */
+    padding-top: 0.5rem; /* Space between name and comment */
+    border-top: 1px solid #eee; /* Top border for separation */
+    margin-top: 0.5rem; /* Space above comments */
+}
+
+    </style>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <!-- ======= Header Section ======= -->
+    <header>
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+        <a href="index.html" class="logo">የኔ-Flower<span>.</span></a>
+        <img src="img/logo2.png" alt="Logo of Yene Flower" class="logoo">
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="#review">Review</a>
+            <a href="#contact">Contact</a>
+            
+            <div class="cart-container">
+            <div class="cart-icon" onclick="toggleCartProducts()"></div>
+            <span id="cart-count" class="cart-count">0</span>
+            <div id="cart-products" class="cart-products">
+                <!-- List of selected products will be dynamically populated here -->
+            </div>
+        </div>
+    </header>
+    <!-- ======= Home Section ======= -->
+    <section class="home" id="home">
+        <div class="backgrounds">
+            <div class="background"></div>
+            <div class="background"></div>
+            <div class="background"></div>
+        </div>
+        <div class="content">
+            <h3>Fresh flowers</h3>
+            <span>Natural and beautiful flowers</span>
+            <p>Explore Yene-Flower Bar for fresh, Hand-picked flowers and elegant arrangements delivered right to your door. Perfect for any occasion, our blooms bring joy and beauty with every order.</p>
+            <a href="products.html" class="btn">Buy Now</a>
+        </div>
+        <div class="pagination">
+            <div class="circle" data-index="0"></div>
+            <div class="circle" data-index="1"></div>
+            <div class="circle" data-index="2"></div>
+        </div>
+    </section>
+
+    <!-- ======= About Section ======= -->
+    <section class="about" id="about">
+        <h1 class="heading"> <span>Upon </span>We</h1>
+        <div class="row">
+            <div class="video-container">
+                <video src="img/yeneflowervideo.mp4" loop autoplay muted></video>
+                <h3>የኔ-Flower Bar</h3>
+            </div>
+            <div class="content">
+                <h3>Why Choose US</h3>
+                <p>
+                    At Yene-Flower, we turn every moment into a lasting memory with our fresh, hand-picked blooms and unique gifts. We pride ourselves on delivering vibrant arrangements and thoughtful gifts, all with a personal touch and reliable service across Addis Ababa.
+                </p>
+                <p>Enjoy beautiful flowers without breaking the bank, and let us make your special occasions truly unforgettable. Choose Yene-Flower—where every bouquet blossoms with love. 🌸</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Icons Section ======= -->
+    <section class="icons-container">
+        <div class="icons">
+            <img src="img/icon-1.png" alt="">
+            <div class="info">
+                <h3>Same-Day Flower Delivery</h3>
+                <span>On all orders</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="img/icon-2.png" alt="">
+            <div class="info">
+                <h3>Discounts on Bulk Orders</h3>
+                <span>more value for your budget</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="img/icon-3.png" alt="">
+            <div class="info">
+                <h3>Flowers & Gifts</h3>
+                <span>plenty of options</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="img/icon-4.png" alt="">
+            <div class="info">
+                <h3>Secure payments</h3>
+                <span>Protected by telebirr</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Products Section ======= -->
+    <section class="products" id="products">
+        <h1 class="heading"> <span>Latest</span> Products</h1>
+        <div class="box-container">
+            <!-- Replace this section with actual product data -->
+            <div class="box">
+                <span class="discount">Discount</span>
+                <div class="image">
+                    <img src="img/flower1.jpg" alt="" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">500 birr <span>600 birr</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <span class="discount">Discount</span>
+                <div class="image">
+                    <img src="img/flower2.jpg" alt="" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">500 birr <span>600 birr</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <span class="discount">Discount</span>
+                <div class="image">
+                    <img src="img/package2.jpg" alt="" class="product-image">
+                    <div class="content">
+                        <h3>Package</h3>
+                        <div class="price">500 birr <span>600 birr</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <span class="discount">Discount</span>
+                <div class="image">
+                    <img src="img/teddybears2.jpg" alt="" class="product-image">
+                    <div class="content">
+                        <h3>Teddy Bear</h3>
+                        <div class="price">500 birr <span>600 birr</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-more-container" style="text-align: center; margin-top: 2rem;">
+            <a href="products.html" class="view-more-btn">View More Products</a>
+        </div>
+    </section>
+
+    <!-- ======= Review Section ======= -->
+    <section class="review" id="review">
+        <h1 class="heading"><span>Customer</span> Rating</h1>
+        <div class="comments-wrapper">
+            <div class="comment" style="top: 10px; left: 50px;">
+                <div class="user-info">
+                    <img src="img/customer1.jpg" alt="User" class="user-img">
+                    <p class="user-name">Mesi</p>
+                </div>
+                <p class="user-comment">"Great service, highly recommended!"</p>
+            </div>
+            <div class="comment" style="top: 40px; left: 250px;">
+                <div class="user-info">
+                <img src="img/customer11.jpg" alt="User" class="user-img">
+                    <p class="user-name">Mikiyas</p>
+                </div>
+                <p class="user-comment">"The flowers were fresh and delivered on time."</p>
+            </div>
+            <div class="comment" style="top: 100px; left: 150px;">
+                <div class="user-info">
+                <img src="img/customer10.jpg" alt="User" class="user-img">
+                    <p class="user-name">Yonas</p>
+                </div>
+                <p class="user-comment">"Beautiful arrangements!"</p>
+            </div>
+            <div class="comment" style="top: 160px; left: 300px;">
+                <div class="user-info">
+                <img src="img/customer9.jpg" alt="User" class="user-img">
+                    <p class="user-name">Robel</p>
+                </div>
+                <p class="user-comment">"Very professional and on time!"</p>
+            </div>
+            <div class="comment" style="top: 200px; left: 50px;">
+                <div class="user-info">
+                <img src="img/customer2.jpg" alt="User" class="user-img">
+                    <p class="user-name">Hirut</p>
+                </div>
+                <p class="user-comment">"Highly satisfied with my purchase."</p>
+            </div>
+            <div class="comment" style="top: 80px; left: 450px;">
+                <div class="user-info">
+                <img src="img/customer8.jpg" alt="User" class="user-img">
+                    <p class="user-name">Henok</p>
+                </div>
+                <p class="user-comment">"Will definitely order again!"</p>
+            </div>
+            <div class="comment" style="top: 240px; left: 200px;">
+                <div class="user-info">
+                <img src="img/customer7.jpg" alt="User" class="user-img">
+                    <p class="user-name">Tsion</p>
+                </div>
+                <p class="user-comment">"Lovely selection of flowers!"</p>
+            </div>
+            <div class="comment" style="top: 300px; left: 300px;">
+                <div class="user-info">
+                <img src="img/customer3.jpg" alt="User" class="user-img">
+                    <p class="user-name">Maramawit</p>
+                </div>
+                <p class="user-comment">"Quick delivery and fresh flowers."</p>
+            </div>
+            
+            <div class="comment" style="top: 140px; left: 100px;">
+                <div class="user-info">
+                <img src="img/customer4.jpg" alt="User" class="user-img">
+                    <p class="user-name">Hana</p>
+                </div>
+                <p class="user-comment">"Best flower shop in town!"</p>
+            </div>
+            <div class="comment" style="top: 200px; left: 500px;">
+                <div class="user-info">
+                <img src="img/customer6.jpg" alt="User" class="user-img">
+                    <p class="user-name">Abigiya</p>
+                </div>
+                <p class="user-comment">"Great prices and fast delivery."</p>
+            </div>
+            <div class="comment" style="top: 260px; left: 350px;">
+                <div class="user-info">
+                <img src="img/customer5.jpg" alt="User" class="user-img">
+                    <p class="user-name">Semira</p>
+                </div>
+                <p class="user-comment">"Amazing customer service."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" id="contact">
+        <h1 class="heading"><span>Contact</span>-Us</h1>
+        <div class="row">
+            <form action="">
+                <input type="text" placeholder="Name" class="box" required>
+                <input type="email" placeholder="E-mail" class="box" required>
+                <input type="number" placeholder="Number" class="box" required>
+                <textarea cols="30" rows="10" class="box" placeholder="Messages" required></textarea>
+                <input type="submit" value="submit" class="btn">
+            </form>
+            <div class="image">
+                <img src="img/contact-img.svg" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Contact Information</h3>
+                <a href="tel:+251939272819" target="_blank">📞 0939272819 |
+                0939944120</a>
+                <a href="mailto:infoyeneflower@gmail.com" target="_blank">📧 infoyeneflower@gmail.com</a>
+                <a href="https://maps.app.goo.gl/EaetkjYbw3jWMc888" target="_blank">📍 Gerji Mebrathail</a>
+                
+            </div>
+            
+            <!-- Social Media Links Container -->
+            <div class="social-icons">
+        <a href="https://www.instagram.com/yene_flowerbar?igsh=bHBzMGU1Z3VhY2Zz" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@yene_flowerbar?is_from_webapp=1&sender_device=pc" class="tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+        </div>
+        <div class="credit">Created By <span>NM Software Solutions</span> | All Rights Reserved</div>
+    </section>
+</body>
+</html>

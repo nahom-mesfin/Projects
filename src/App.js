@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from "./HomePage";
+import AboutPage from "./FreePage";
+import Contact from './contact';
+import {Login} from './component/Login/Login';
+import Register from './component/Login/Register';
+import PaidPage from './paid';
+import DeletePage from './component/AdminPage/Delete';
+import AdminAdd from './component/AdminPage/AdminAdd';
+import Admin from './component/AdminPage/Admin';
+import LandingPage from './LandingPage';
+
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/free" element={<AboutPage />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/paidpage" element={<PaidPage />} />
+        <Route path="/AdminAdd" element={<AdminAdd />} />
+        <Route path="/Deletepage" element={<DeletePage />} />
+        <Route path="/LandingPage/:id" element={<LandingPage />} />
+        <Route path="/Admin" element={<Admin/>}/>
+      </Routes>
+    </Router>
   );
 }
 

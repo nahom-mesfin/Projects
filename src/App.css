@@ -1,38 +1,548 @@
-.App {
-  text-align: center;
+
+
+body {
+margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li {
+display: inline-block;
+padding: 0px 20px;
+color: aqua;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navLink {
+text-decoration: none;
+color: rgb(200, 200, 214);
+float: center;
+padding: 10px 10px;
+font-size: 17px;
+align-items: flex-end;
+}
+
+h1 {
+padding: 0 0 0 20px;
+}
+
+.homepage {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+.header {
+background-color: #060110;
+padding: 10px;
+color: #e0e0e0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.content {
+flex-grow: 1;
+display: flex;
+}
+
+.search-element {
+flex-basis: 20%;
+background-color: #e0e0e0;
+padding: 16px;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+}
+
+.search-bar {
+display: flex;
+align-items: center;
+margin-bottom: 16px;
+}
+
+.search-bar input {
+flex: 1;
+}
+
+.search-results {
+flex-grow: 1;
+overflow-y: auto;
+}
+
+.cards {
+display: flex;
+flex-direction: column;
+flex-basis: 60%;
+}
+
+.card-small {
+flex-basis: 20%;
+background-color: #e0e0e0;
+padding: 16px;
+}
+
+.card-large {
+flex-grow: 3;
+background-color: #f8f8f8;
+margin-bottom: 16px;
+padding: 16px;
+}
+
+.card-main {
+border: 1px solid rgb(207, 228, 207);
+padding: 16px;
+border-radius: 4px;
+background-color: #f0f8ff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+margin-bottom: 16px;
+margin-left: 16px;
+margin-right: 16px;
+font: bolder;
+}
+
+.card-main h3 {
+font-size: 18px;
+margin-bottom: 8px;
+}
+
+.card-main p {
+font-size: 20px;
+margin-bottom: 4px;
+}
+
+.tender-type {
+border-radius: 10px;
+background-color: green;
+color: white;
+display: inline-block;
+padding: 5px;
+}
+
+/* .btn-search {
+background-color: rgb(8, 47, 245);
+color: #e0e0e0;
+} */
+
+/* ...existing CSS code... */
+
+.search-buttons {
+display: flex;
+margin-left: 10px;
+}
+
+.btn-search {
+background-color: rgb(8, 47, 245);
+color: #e0e0e0;
+margin-right: 5px;
+}
+
+.btn-clear {
+background-color: #ccc;
+color: #e0e0e0;
+}
+
+.search-elementp {
+display: flex;
+}
+
+.Admin-Main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  background-color: white;
+  padding: 20px;
+}
+
+.Admin-border {
+  border: 1px solid rgb(34, 37, 38);
+  border-radius: 10px; /* Add round border */
+  padding: 20px;
+}
+
+.admin-borders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.admin-button {
+  margin-bottom: 10px; /* Add space between buttons */
+}
+
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgb(13, 13, 13);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.add-form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.add-form-label {
+  margin-bottom: 5px;
+}
+
+.add-form-input {
+  padding: 5px;
+  width: 100%;
+}
+
+.add-form-textarea {
+  height: 100px;
+  width: 100%;
+}
+
+.Add-border {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: rgb(6, 3, 3);
+}
+
+.Add-H2 {
+  color: rgb(6, 5, 5);
+  margin-bottom: 20px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-form-group {
+  margin-bottom: 15px;
+  color: rgb(6, 3, 3)  ; 
+}
+
+.add-form-label {
+  color: black;
+}
+
+.add-form-input {
+  width: 300px;
+  height: 30px;
+}
+
+.admin-form-textarea {
+  width: 300px;
+  height: 100px;
+}
+
+.add-form-button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(227, 33, 33);
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.DeletePage {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.DeletePage-title {
+  color: rgb(19, 19, 19);
+  margin-bottom: 20px;
+}
+
+.DeletePage-search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.DeletePage-search-input {
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.DeletePage-search-clear {
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.DeletePage-tender {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DeletePage-tender-info {
+  color: rgb(1, 1, 1);
+  margin-bottom: 10px;
+}
+
+.DeletePage-tender-delete {
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.btn-search {
+  width: 120px;
+  height: 40px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-clear {
+  width: 120px;
+  height: 40px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-results {
+  margin-top: 20px;
 }
+
+.search-results p {
+  margin-bottom: 5px;
+}
+
+
+.search-element {
+  background-color: #e0e0e0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  grid-column: 1 / 2; /* Occupy the first column */
+}
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+ 
+  padding:50px
+}
+
+
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  padding: 40px;
+  width: 600px;
+  height: 300px;
+  border-radius: 44px;
+  margin-top: 100px;
+
+  /* background-color: lightblue;
+   */
+}
+
+
+.auth-container{
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0,.1) !important;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-image: url('./component/Image/1000_F_460710131_G.jpg'); */
+  background-color: white;
+}
+
+.login-form-wrapper {
+  /* max-width: 600px; Increase the width to make the form bigger */
+  /* padding: 600px; Increase the padding for more spacing */
+  /* background-color: rgba(0, 128, 0, 0.8); Update the background color to black and light greenish */
+  border-radius: 10px;
+  
+}
+
+.login-form {
+  /* background-color: #fff; */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  width:25vw;
+  
+}
+
+.login-form h2 {
+  font-size: 24px; /* Increase the font size for the heading */
+}
+
+input {
+  width: 100%;
+  padding: 15px; /* Increase the padding for larger input fields */
+  margin-bottom:  15px; /* Increase the margin for more spacing */
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px; /* Increase the font size for input fields */
+}
+
+.login-form button {
+  width: 100%;
+  padding: 15px; /* Increase the padding for a larger button */
+  /* background-color: #4CAF50; */
+  
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px; /* Increase the font size for the button */
+}
+
+.login-form .error-message {
+  color: #ff0000;
+  margin-bottom: 10px;
+  font-size: 14px; /* Increase the font size for the error message */
+}
+
+.router-login {
+  margin-top: 150px !important; /* Add margin to separate from the form */
+  font-size: 16px; /* Increase the font size for the router-login text */
+  
+}
+
+
+
+
+
+
+
+
+
+
+.left,
+.bigger{
+  font-size:x-large;
+}
+
+
+.form-title{
+  text-align: center;
+  margin: 0px 0px 90px 0px;
+  font-size: 50px !important ;
+}
+
+.password{
+  margin-bottom: 50px;
+}
+
+.form-row,
+.email,
+.password {
+width:100%;
+display: flex;
+flex-direction: column;
+align-items: flex-start !important;
+}
+
+
+.email label {
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.router-login {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: left;
+  border: 10px #0b0b0c;
+  border-radius: 4px;
+  margin-inline-end: auto;
+}
+
+label {
+  margin-right: 10px;
+}
+
+/* contact.css */
+
+/* contact.css */
+
+/* contact.css */
+

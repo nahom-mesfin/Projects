@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ወፍጮዬ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Alfa+Slab+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="brand brand-navbar">
+                <div class="logo1"></div>
+                <div class="logo2"></div>
+                <div class="logo3"></div>
+                <span>ወፍጮዬ</span>
+            </div>
+            <!--
+            <div class="search-bar">
+                <input type="text" placeholder="What are you looking for?">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>-->
+            <div class="hamburger-menu">
+                <div class="menu-icon">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                </div>
+                <div class="navigation">
+                    <a href="../index.html">HOME</a>
+                    <a href="../wefechoye/index.html">MENU</a>
+                    <a href="../about.html">ABOUT</a>
+                  
+                    <a href="../contact.html">CONTACT</a>
+                    <a href="shopping-cart-js/cart.html"><i class="fa-solid fa-cart-shopping" title="ጆኒያዬ"></i></a>
+                </div>
+            </div>
+        </nav>
+        <!-- End of Navbar -->
+
+        <!-- Landing -->
+        <section class="landing">
+            <div class="landing-img">
+                <img src="images/wefecho1.jpg">
+            </div>
+            <div class="banner">
+                <h1 class="banner-heading">
+                    <span>የመኸር </span>ማዕከል
+                </h1>
+                <div class="banner-content">
+                    <p>እንኳን በደህና ወደ እህል የግብርና ምርቶች ማዕከል በደህና መጡ፣ ለዕለታዊ ፍላጎቶችዎ በጣም ትኩስ እና ከፍተኛ ጥራት ያላቸውን ሰብሎችን ማግኘት ይችላሉ። በጥንቃቄ የተመረጠው ስብስባችን የተለያዩ ጥራጥሬዎችን ያካትታል::</p>
+                    <div class="more-text" style="display: none;">
+                        <p>የቤት ውስጥ ምግብ ማብሰያ፣ወይም በቀላሉ ምርጥ ጥራት ያላቸውን የግብርና ምርቶችን የሚያደንቅ ሰው፣ የሚፈልጉትን በትክክል በ የእርሻ ጠረጴዛ እንደሚያገኙ እርግጠኞች ነን። ምርቶቻችን በጥንቃቄ የተመረጡ፣ በጥንቃቄ የታሸጉ እና በቀጥታ ወደ ደጃፍዎ ይላካሉ።</p><br>
+                        <p> እህልን ስለመረጡ እናመሰግናለን። በቅርቡ እርስዎን ለማገልገል በጉጉት እንጠባበቃለን!</p>
+                    </div>
+                    <button class="read-more-button">ተጨማሪ ያንብቡ</button>
+                    <button class="read-less-button" style="display: none;">ያነሰ ማንበብ</button>
+                </div>
+                
+                <style>
+                    .read-more-button,
+                    .read-less-button {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: none;
+                        padding: 10px 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin: 10px 0;
+                        cursor: pointer;
+                    }
+                    .more-text {
+                        display: none;
+                    }
+                </style>
+                
+                <script>
+                    const readMoreBtn = document.querySelector('.read-more-button');
+                    const readLessBtn = document.querySelector('.read-less-button');
+                    const moreText = document.querySelector('.more-text');
+                
+                    readMoreBtn.addEventListener('click', () => {
+                        moreText.style.display = 'block';
+                        readMoreBtn.style.display = 'none';
+                        readLessBtn.style.display = 'inline-block';
+                    });
+                
+                    readLessBtn.addEventListener('click', () => {
+                        moreText.style.display = 'none';
+                        readLessBtn.style.display = 'none';
+                        readMoreBtn.style.display = 'inline-block';
+                    });
+                </script>
+            </div>
+        </section>
+        
+        
+        <section class="projects">
+            <h1 class="projects-heading">የሰብል ኮርነር</h1>
+            <div style="display: flex; justify-content: flex-end; align-items: center;">
+                <div style="margin-left: auto;">
+                  <a href="shopping-cart-js/index.html " style="text-decoration: none;" title="ይሸምቱ">
+                    <i class="fa-solid fa-cart-shopping" style="color: goldenrod; font-size: 24px;"></i>
+                  </a>
+                </div>
+                <div style="text-align: right;">
+                  <h2>ወደ ግዚ ማከል</h2>
+                </div>
+              </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="images/mashela.jpg">
+                    <div class="card-content">
+                        <h1 size="90%">ማሽላ   45 ብር</h1>
+                        <p>ማሽላ የተለያዩ የአመጋገብ ጥቅሞችን የሚሰጥ ምርጥ የምግብ ሰብል ነው።ማሽላ በፕሮቲን እና ፋይበር የበለፀገ ሲሆን ይህም የምግብ መፈጨትን ጤና ለመደገፍ እና እርካታን ለማራመድ ያስችላል። በተጨማሪም ማሽላ እንደ ብረት፣ ማግኒዚየም እና ፎስፎረስ ያሉ አስፈላጊ ቪታሚኖች እና ማዕድኖችን ለአጠቃላይ ጤና እና ደህንነት ጠቃሚ ናቸው።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/shenebera.jpg">
+                    <div class="card-content">
+                        <h1>ሽንብራ 60 ብር</h1>
+                        <p>ሽንብራ በጣም የተመጣጠነ ጥራጥሬ ሲሆን ብዙ የጤና ጥቅሞችን ይሰጣል። ይህ ሁለገብ ጥራጥሬ እጅግ በጣም ጥሩ የአመጋገብ ፋይበር፣ ቫይታሚን ሲ፣ ፖታሲየም እና ሌሎች ጠቃሚ ንጥረ ነገሮች ምንጭ ነው።በካሎሪ እና በስብ ዝቅተኛ በመሆኑ ጤናማ ክብደትን ለመጠበቅ ለሚፈልጉ ሰዎች ምርጥ ምርጫ ያደርጋቸዋል።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/bakela.jpg">
+                    <div class="card-content">
+                        <h1>ባቄላ 60 ብር </h1>
+                        <p>ባቄላ በአለም ዙሪያ የሚወደድ ገንቢ እና ሁለገብ ምግብ ነው። እጅግ በጣም ጥሩ የፕሮቲን፣ ፋይበር፣ የቪታሚኖች እና ማዕድናት ምንጭ በመሆናቸው ለጤናማ አመጋገብ ትልቅ ተጨማሪ ያደርጋቸዋል።
+
+                            ባቄላ በንጥረ-ምግብ ከያዘው ምግብ በተጨማሪ ስብ እና ካሎሪ ዝቅተኛ በመሆኑ ጤናማ ክብደትን ለመጠበቅ ለሚፈልጉ ሰዎች ተመራጭ ያደርገዋል።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/sendea.jpg">
+                    <div class="card-content">
+                        <h1>ስንዴ 60 ብር</h1>
+                        <p>ስንዴ በዓለም ላይ በብዛት ከሚበቅሉ እና ከሚበሉት እህሎች አንዱ ነው፣ እና ለዚህ በቂ ምክንያት ነው። እጅግ በጣም ጥሩ የተወሳሰቡ የካርቦሃይድሬትስ፣ ፋይበር እና ፕሮቲን ምንጭ ነው፣ ይህም በአለም ዙሪያ ባሉ በርካታ ምግቦች ውስጥ ዋና ያደርገዋል።
+
+                            ስንዴ ከአመጋገብ እሴቱ በተጨማሪ በሚያስደንቅ ሁኔታ ሁለገብ እና ለተለያዩ ምግቦች ማለትም ከዳቦ እስከ ፓስታ መጠቀም ይቻላል።</p>
+                    </div>
+                    <!--<div class="card">
+                        <img src="images/keysende.jpg">
+                        <div class="card-content">
+                            <h1>ቀይ ስንዴ 60 ብር</h1>
+                            <p>ስንዴ በዓለም ላይ በብዛት ከሚበቅሉ እና ከሚበሉት እህሎች አንዱ ነው፣ እና ለዚህ በቂ ምክንያት ነው። እጅግ በጣም ጥሩ የተወሳሰቡ የካርቦሃይድሬትስ፣ ፋይበር እና ፕሮቲን ምንጭ ነው፣ ይህም በአለም ዙሪያ ባሉ በርካታ ምግቦች ውስጥ ዋና ያደርገዋል።
+
+                                ስንዴ ከአመጋገብ እሴቱ በተጨማሪ በሚያስደንቅ ሁኔታ ሁለገብ እና ለተለያዩ ምግቦች ማለትም ከዳቦ እስከ ፓስታ መጠቀም ይቻላል።</p>
+                        </div>
+                    </div>-->
+                </div><div class="card">
+                    <img src="images/aja.jpg">
+                    <div class="card-content">
+                        <h1>አጃ 90 ብር</h1>
+                        <p>አጃ ብዙ የጤና ጥቅማ ጥቅሞችን የሚሰጥ በጣም የተመጣጠነ እህል ነው። እንደ ቲያሚን፣ ማግኒዥየም እና ፎስፎረስ ያሉ እጅግ በጣም ጥሩ የአመጋገብ ፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ናቸው።
+                        </p>
+                    </div>
+                </div><div class="card">
+                    <img src="images/bekello.jpg">
+                    <div class="card-content">
+                        <h1>በቆሎ 40 ብር</h1>
+                        <p>በቆሎ በመባልም የሚታወቀው፣በዓለማችን በብዛት ከሚለሙ እና ከሚበሉት ሰብሎች አንዱ ነው። እንደ ቫይታሚን B6፣ ታይሚን እና ፖታሺየም ያሉ የካርቦሃይድሬትስ፣ ፋይበር እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/sheneberashero.jpg">
+                    <div class="card-content">
+                        <h1>ሽንብራ ሽሮ 85 ብር </h1>
+                        <p>ሽንብራ ሽሮ በጣም የተመጣጠነ ጥራጥሬ ሲሆን ብዙ የጤና ጥቅሞችን ይሰጣል። ይህ ሁለገብ ጥራጥሬ እጅግ በጣም ጥሩ የአመጋገብ ፋይበር፣ ቫይታሚን ሲ፣ ፖታሲየም እና ሌሎች ጠቃሚ ንጥረ ነገሮች ምንጭ ነው።በካሎሪ እና በስብ ዝቅተኛ በመሆኑ ጤናማ ክብደትን ለመጠበቅ ለሚፈልጉ ሰዎች ምርጥ ምርጫ ያደርጋቸዋል።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/keysende.jpg">
+                        <div class="card-content">
+                            <h1>ቀይ ስንዴ 60 ብር</h1>
+                            <p>ስንዴ በዓለም ላይ በብዛት ከሚበቅሉ እና ከሚበሉት እህሎች አንዱ ነው፣ እና ለዚህ በቂ ምክንያት ነው። እጅግ በጣም ጥሩ የተወሳሰቡ የካርቦሃይድሬትስ፣ ፋይበር እና ፕሮቲን ምንጭ ነው፣ ይህም በአለም ዙሪያ ባሉ በርካታ ምግቦች ውስጥ ዋና ያደርገዋል።
+
+                                </p>
+                        </div>
+                </div>
+                <div class="card">
+                    <img src="images/misir.jpg">
+                    <div class="card-content">
+                        <h1>ምስር 165 ብር</h1>
+                        <p>ምስር ብዙ የጤና ጥቅማጥቅሞችን የሚሰጥ በጣም የተመጣጠነ ጥራጥሬ ነው። እጅግ በጣም ጥሩ የእፅዋት ፕሮቲን፣ ፋይበር፣ ብረት እና ፎሌት ምንጭ ናቸው፣ ይህም በብዙ የቬጀቴሪያን እና የቪጋን አመጋገብ ውስጥ ጠቃሚ ምግብ ያደርጋቸዋል።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/ruz.jpg">
+                    <div class="card-content">
+                        <h1>ሩዝ 80 ብር</h1>
+                        <p>ሩዝ በዓለም ላይ በብዛት ከሚመገቡት ዋና ዋና ምግቦች አንዱ ነው፣ ለዚህም በቂ ምክንያት ነው። እንደ ቲያሚን፣ ኒያሲን እና ብረት ያሉ የካርቦሃይድሬትስ፣ ፋይበር እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/gebes.jpg">
+                    <div class="card-content">
+                        <h1>ገብስ 55 ብር</h1>
+                        <p>ገብስ ገንቢ የሆነ ሙሉ እህል ሲሆን በተለያዩ ምግቦች ውስጥ በብዛት ጥቅም ላይ የሚውል ሲሆን ይህም ሾርባ, ወጥ, ሰላጣ, እና ሪሶቶስ ያካትታል. እንደ ብረት፣ ማግኒዚየም እና ሴሊኒየም ያሉ እጅግ በጣም ጥሩ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+                    </div>
+                </div>
+            <div class="card">
+                <img src="images/aterkik.jpg">
+                <div class="card-content">
+                    <h1>አተር ክክ 110 ብር</h1>
+                    <p>አተር በፋይበር፣ ፕሮቲን፣ እና እንደ ቫይታሚን ሲ፣ ቫይታሚን ኬ እና ፎሌት ባሉ አስፈላጊ ቪታሚኖች እና ማዕድናት የበለፀገ ገንቢ ጥራጥሬ ነው። ጤናማ አመጋገብን ለመጠበቅ እና አጠቃላይ ጤናን እና ደህንነትን ለማራመድ ለሚፈልጉ በጣም ጥሩ ምርጫ ናቸው።</p>
+                </div>
+            </div>
+        <div class="card">
+            <img src="images/bechoteff.jpg">
+            <div class="card-content">
+                <h1>በቸና ጤፍ 85 ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/debrebrihanteff.jpg">
+            <div class="card-content">
+                <h1>የደብረ ብርሀን ጤፍ 75 ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/yegojjamteff.jpg">
+            <div class="card-content">
+                <h1>የጎጃም ጤፍ 84 ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/yedbteff.jpg">
+            <div class="card-content">
+                <h1>የደብረብርሀንጤፍ ደረጃ1 95ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/yegojjamteff2.jpg">
+            <div class="card-content">
+                <h1>የጎጃም ጤፍ ደረጃ1 86 ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/bichena2teff.jpg">
+            <div class="card-content">
+                <h1>በቸና ጤፍ ደረጃ2 78 ብር</h1>
+                <p>ጤፍ እጅግ በጣም ገንቢ የሆነ ጥንታዊ እህል ሲሆን የትውልድ አገሩ ኢትዮጵያ ሲሆን በአፍሪካ ቀንድ አካባቢ በስፋት ጥቅም ላይ ይውላል። እንደ ብረት፣ ካልሲየም እና ቫይታሚን ሲ ያሉ የፋይበር፣ ፕሮቲን እና አስፈላጊ የቪታሚኖች እና ማዕድናት ምንጭ ነው።</p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; align-items: center;">
+            <div style="margin-left: auto;">
+              <a href="shopping-cart-js/index.html " style="text-decoration: none;" title="ይሸምቱ">
+                <i class="fa-solid fa-cart-shopping" style="color: goldenrod; font-size: 24px;"></i>
+              </a>
+            </div>
+          </div>
+</div>
+            <div class="designs section-bottom">
+                <h1>ብዛት ያላቸውን ዋና የግብርና ምርቶች በድረ-ገጻችን ያስሱ፣</h1>
+                <h3>አቅርቦቶቻችንን ስናሰፋ እና ተደራሽነታችንን ስናሳድግ በየጊዜው መፈተሽዎን ያረጋግጡ።</h3>
+            </div>
+        </section>
+        <!-- End of Projects -->
+
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="brand brand-footer">
+                    <div class="logo1"></div>
+                    <div class="logo2"></div>
+                    <div class="logo3"></div>
+                    <span>ወፍጮዬ</span>
+                </div>
+                <div class="copyright">
+                    <p>&copy; All Rights Reserved. Made by Debre Berhan university software engineering students</p>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Container -->
+
+    <script src="script.js"></script>
+</body>
+</html>

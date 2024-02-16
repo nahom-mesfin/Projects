@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Include all the CSS styles from your Blade file here */
+        body {
+        font-family: Arial, sans-serif;
+    }
+
+    .search-container {
+    display: flex;
+    justify-content: center; /* Center the search bar horizontally */
+    margin: 20px 0; /* Add some top and bottom margin for spacing */
+}
+
+.search-container input[type="text"] {
+    width: 300px; /* Set a specific width for the search bar */
+    padding: 10px; /* Add padding for better appearance */
+    border: 1px solid #ccc; /* Border for the input field */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-color 0.3s;
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #4CAF50; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+
+    .checkbox-container {
+        position: fixed;
+        top: 250px; /* Adjust as needed */
+        left: 1px; /* Position more to the left */
+        background-color: pink;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure it stays above other elements */
+    }
+
+    .checkbox-container label {
+    display: block; /* Change to block for vertical layout */
+    margin-bottom: 10px; /* Add spacing between checkboxes */
+}
+
+    .box-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Adjust for better spacing */
+        margin: 0 -10px;
+    }
+
+    .box {
+        width: calc(33.33% - 20px); /* Three products in one line */
+        margin: 10px; /* Reduce margin for compact layout */
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: transform 0.2s; /* Add transition for hover effect */
+    }
+
+    .box:hover {
+        transform: scale(1.02); /* Slightly enlarge on hover */
+    }
+
+    .box .image {
+        position: relative;
+    }
+
+    .box .image img {
+        max-width: 100%;
+        border-radius: 8px;
+        cursor: pointer; /* Change cursor for better UX */
+    }
+
+    .content {
+        padding: 15px 0;
+    }
+
+    .price {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .quantity-btn {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 8px;
+        transition: background-color 0.3s;
+    }
+
+    .quantity {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0 12px;
+    }
+
+    .quantity-btn:hover {
+        background: #45A049;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .logoo {
+            width: 62px;
+            height: auto;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .cart-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .cart-icon {
+            width: 50px;
+            height: 50px;
+            background: url('img/cart-logo.png') center/cover no-repeat;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .view-more-btn {
+            background: var(--pink);
+            color: #fff;
+            padding: 1rem 3rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .view-more-btn:hover {
+            background: #333;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .footer .box-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer .box {
+    flex: 1;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center; /* Center the icons */
+    padding: 1rem 0;
+}
+
+.footer .social-icons a {
+    font-size: 2rem;
+    color: #333; /* Default icon color */
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    background: #f1f1f1; /* Light background for the icons */
+    padding: 15px; /* Larger padding for emphasis */
+    border-radius: 50%; /* Make the icons circular */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-decoration: none;
+    position: relative; /* For pseudo-element effects */
+    overflow: hidden; /* Ensure smooth hover animations */
+}
+
+.footer .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+    transition: all 0.5s ease;
+    z-index: 1;
+    opacity: 0;
+}
+
+.footer .social-icons a:hover::before {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+}
+
+.footer .social-icons a:hover {
+    transform: translateY(-5px) rotate(5deg); /* Cool hover effect with rotation */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+    color: #fff; /* Change icon color on hover */
+}
+
+.footer .social-icons a.instagram:hover {
+    background-color: var(--pink); /* Instagram retains the pink color */
+}
+
+.footer .social-icons a.facebook:hover {
+    background-color: #1877f2; /* Facebook blue */
+}
+
+.footer .social-icons a.tiktok:hover {
+    background-color: #000000; /* TikTok black */
+}
+/* Clear All button */
+.clear-all-btn {
+    background-color: #ff4d4d;  /* Red for the 'Clear' action */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.clear-all-btn:hover {
+    background-color: #e60000;
+    transform: scale(1.05);  /* Slightly enlarge the button */
+}
+
+/* Pay Now button */
+.pay-now-btn {
+    background-color: #28a745;  /* Green for 'Pay Now' */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.pay-now-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);  /* Slightly enlarge the button */
+}
+
+/* Cart Item Style (No Container) */
+.cart-item {
+    background-color: #444;  /* Darker background for each item */
+    color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    position: relative;
+    height: auto;  /* Allow for flexible height */
+    max-width: 1200px;  /* Limit max width for a neat layout */
+    font-size: 1.2rem;
+    display: block;
+    overflow-y: auto;
+}
+
+/* Product Name */
+.cart-item strong {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffdd00;  /* Gold/yellow for emphasis */
+    display: block;
+}
+
+/* Price */
+.cart-item p {
+    font-size: 1.6rem;
+    color: #28a745;  /* Green for price */
+    margin-top: 10px;
+}
+
+/* Quantity Controls */
+.cart-item .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #555;  /* Darker background for quantity controls */
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Quantity buttons */
+.cart-item .quantity-controls button {
+    background-color: #ff6600;  /* Orange for buttons */
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.cart-item .quantity-controls button:hover {
+    background-color: #e55d00;  /* Darker orange on hover */
+}
+
+/* Quantity number */
+.cart-item .quantity-controls span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;  /* White color for quantity */
+}
+
+/* Delete Button (Trash Icon) */
+.cart-item .delete-icon {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #ff3333;  /* Bright red for delete icon */
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.cart-item .delete-icon:hover {
+    color: #ff0000;  /* Darker red on hover */
+    transform: scale(1.2);  /* Slightly enlarge the icon */
+}
+
+/* Total Price */
+.cart-item div:last-child {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: right;
+}
+
+/* Highlight effect on hover */
+.cart-item:hover {
+    border: 2px solid #ffdd00;  /* Gold border on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);  /* More pronounced shadow */
+}
+
+/* Cart Item count (Badge) */
+.cart-count {
+    display: inline-block;
+    background-color: #ff3366; /* Pink background */
+    color: #fff; /* White text */
+    font-size: 1.6rem; /* Size of the text */
+    font-weight: bold; /* Bold text */
+    width: 2.5rem; /* Width of the badge */
+    height: 2.5rem; /* Height of the badge */
+    border-radius: 50%; /* Circular shape */
+    text-align: center; /* Center the number */
+    line-height: 2.5rem; /* Vertically center the text */
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.cart-count:hover {
+    background-color: #ff4d84; /* Hover effect */
+    transform: scale(1.1); /* Slightly enlarge */
+}
+
+.cart-count:active {
+    transform: scale(0.9); /* Shrink effect when clicked */
+}
+
+/* Optional: Position the cart icon with the count in the top-right corner */
+.cart-icon {
+    position: fixed;
+    top: 20px; /* Set position for cart icon */
+    right: 20px; /* Set position for cart icon */
+    z-index: 9999; /* Ensure it appears on top of all content */
+}
+
+/* Styling for empty cart or no items */
+#cart-products p {
+    font-size: 1.6rem;
+    color: #777; /* Light gray color */
+    font-style: italic;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Cart Header */
+#cart-products h3 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 80px;  /* Pushes the header down below the cart icon */
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 0.5rem;
+    text-align: center; 
+}
+
+
+
+    </style>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <header>
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+        <a href="index.html" class="logo">የኔ-Flower<span>.</span></a>
+        <img src="img/logo2.png" alt="Logo of Yene Flower" class="logoo">
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="#review">Review</a>
+            <a href="#contact">Contact</a>
+            
+            <div class="cart-container">
+            <div class="cart-icon" onclick="toggleCartProducts()"></div>
+            <span id="cart-count" class="cart-count">0</span>
+            <div id="cart-products" class="cart-products">
+                <!-- List of selected products will be dynamically populated here -->
+            </div>
+        </div>
+    </header>
+    <br><br><br><br><br>
+    <!-- ======= Products Section ======= -->
+    <section class="products" id="products">
+        <h1 class="heading"><span>All</span> Products</h1>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for products...">
+        </div>
+
+        <!-- Filters -->
+        <div class="checkbox-container">
+            <h3>Filters</h3>
+            <label><input type="radio" name="product-filter" value="all" checked> All Products</label>
+            <label><input type="radio" name="product-filter" value="rose"> Rose(Flowers)</label>
+            <label><input type="radio" name="product-filter" value="bear"> Bear</label>
+            <label><input type="radio" name="product-filter" value="package"> Package</label>
+        </div>
+
+        <div class="box-container">
+            <!-- Example product -->
+            <div class="box" data-name="rose" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/flower 1.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">200 birr <span>250 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="rose" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/flower1.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">200 birr <span>250 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="rose" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/flower2.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">200 birr <span>250 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="package" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/package1.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Room-Package</h3>
+                        <div class="price">1200 birr <span>1500 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="package" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/package2.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Package</h3>
+                        <div class="price">600 birr <span>750 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="rose" data-type="flower">
+                <span class="discount">10% Off</span>
+                <div class="image">
+                    <img src="img/flower3.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Rose</h3>
+                        <div class="price">200 birr <span>250 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="bear" data-type="flower">
+                <span class="discount">30% Off</span>
+                <div class="image">
+                    <img src="img/teddybears1.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Teddy Bear-Large</h3>
+                        <div class="price">500 birr <span>650 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" data-name="bear" data-type="flower">
+                <span class="discount">40% Off</span>
+                <div class="image">
+                    <img src="img/teddybears2.jpg" alt="Rose" class="product-image">
+                    <div class="content">
+                        <h3>Teddy Bear-Small</h3>
+                        <div class="price">300 birr <span>420 birr</span></div>
+                        <div class="quantity-selector">
+                            <h2>Amount:</h2>
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more products as needed -->
+            <div id="no-items-message" style="display:none;">No items found.</div>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Contact Information</h3>
+                <a href="tel:+251939272819" target="_blank">📞 0939272819 |
+                0939944120</a>
+                <a href="mailto:infoyeneflower@gmail.com" target="_blank">📧 infoyeneflower@gmail.com</a>
+                <a href="https://maps.app.goo.gl/EaetkjYbw3jWMc888" target="_blank">📍 Gerji Mebrathail</a>
+                
+            </div>
+            
+            <!-- Social Media Links Container -->
+            <div class="social-icons">
+        <a href="https://www.instagram.com/yene_flowerbar?igsh=bHBzMGU1Z3VhY2Zz" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@yene_flowerbar?is_from_webapp=1&sender_device=pc" class="tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+        </div>
+        <div class="credit">Created By <span>NM Software Solutions</span> | All Rights Reserved</div>
+    </section>
+    <!-- Modal for large image display -->
+    <div id="image-modal" class="modal">
+        <span id="close-modal" class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <script>
+     let cartCount = 0; // Number of items in the cart
+let cartItems = []; // Array to hold cart item objects
+
+// Function to update the cart count display
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cartCount;
+}
+
+// Function to update the cart products displayed in the dropdown
+function updateCartProducts() {
+    const cartProductsContainer = document.getElementById('cart-products');
+    cartProductsContainer.innerHTML = '<h3>Your Cart</h3><br>'; // Cart header
+
+    if (cartItems.length === 0) {
+        cartProductsContainer.innerHTML += "<p>Your cart is empty.</p>";
+        return;
+    }
+
+    let totalPrice = 0;
+
+    // Loop through each item in the cart and display it
+    cartItems.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+
+        itemElement.innerHTML = `
+            <div>
+                <strong>${item.name}</strong>
+                <p>Price: ${item.price} birr</p>
+                <div>
+                    <button onclick="decrementQuantity(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="incrementQuantity(${index})">+</button>
+                </div>
+                <button onclick="removeItem(${index})" class="delete-icon">🗑️</button>
+            </div>
+            <div>Total: ${item.price * item.quantity} birr</div>
+        `;
+
+        cartProductsContainer.appendChild(itemElement);
+        totalPrice += item.price * item.quantity;
+    });
+
+    // Display total price
+    const totalElement = document.createElement('div');
+    totalElement.classList.add('cart-total');
+    totalElement.innerHTML = `<strong>Total Price: ${totalPrice} birr</strong>`;
+    cartProductsContainer.appendChild(totalElement);
+
+    // Clear All button
+    const clearAllButton = document.createElement('button');
+    clearAllButton.innerText = 'Clear All';
+    clearAllButton.classList.add('clear-all-btn');
+    clearAllButton.onclick = clearAllItems;
+    cartProductsContainer.appendChild(clearAllButton);
+
+    // Pay Now button
+    const payNowButton = document.createElement('button');
+    payNowButton.classList.add('pay-now-btn');
+    payNowButton.innerText = 'Pay Now';
+    payNowButton.addEventListener('click', function() {
+        alert('Proceeding to payment...');
+        // Add your payment processing logic here
+    });
+
+    cartProductsContainer.appendChild(payNowButton);
+}
+
+// Increment item quantity
+function incrementQuantity(index) {
+    cartItems[index].quantity++;
+    updateCartCount();
+    updateCartProducts();
+}
+
+// Decrement item quantity
+function decrementQuantity(index) {
+    if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+    } else {
+        removeItem(index); // Optionally remove item when quantity reaches 1
+    }
+    updateCartCount();
+    updateCartProducts();
+}
+
+// Remove item from the cart
+function removeItem(index) {
+    cartItems.splice(index, 1); // Remove item from array
+    cartCount = cartItems.length; // Update cart count
+    updateCartCount();
+    updateCartProducts();
+}
+
+// Clear all items in the cart
+function clearAllItems() {
+    cartItems = [];
+    cartCount = 0;
+    updateCartCount();
+    updateCartProducts();
+}
+
+// Function to add product to cart
+function addToCart(product) {
+    const existingItem = cartItems.find(item => item.name === product.name);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cartItems.push({ ...product, quantity: 1 });
+    }
+    cartCount = cartItems.length; // Update cart count
+    updateCartCount();
+    updateCartProducts();
+}
+
+// Event listener for quantity buttons (increase/decrease quantity)
+document.querySelectorAll('.quantity-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const box = this.closest('.box');
+        const quantityDisplay = box.querySelector('.quantity');
+        let quantity = parseInt(quantityDisplay.innerText);
+
+        if (this.classList.contains('plus')) {
+            quantity++;
+            addToCart({
+                name: box.querySelector('h3').innerText,
+                price: parseFloat(box.querySelector('.price').innerText),
+                image: box.querySelector('.product-image').src
+            });
+        } else if (this.classList.contains('minus') && quantity > 0) {
+            quantity--;
+            cartCount--;
+            updateCartCount();
+        }
+
+        quantityDisplay.innerText = quantity;
+    });
+});
+
+// Event listener for search input to filter products
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', function () {
+    const filter = searchInput.value.toLowerCase();
+    const boxes = document.querySelectorAll('.box');
+    let found = false;
+
+    boxes.forEach(box => {
+        const name = box.dataset.name;
+        if (name.includes(filter)) {
+            box.style.display = '';
+            found = true;
+        } else {
+            box.style.display = 'none';
+        }
+    });
+
+    document.getElementById('no-items-message').style.display = found ? 'none' : 'block';
+});
+
+// Event listener for radio buttons (product filter)
+document.querySelectorAll('input[name="product-filter"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const filterValue = this.value;
+        const boxes = document.querySelectorAll('.box');
+
+        boxes.forEach(box => {
+            const name = box.dataset.name;
+            const type = box.dataset.type;
+
+            if (filterValue === 'all' || name.includes(filterValue)) {
+                box.style.display = '';
+            } else {
+                box.style.display = 'none';
+            }
+        });
+
+        // Show or hide no items message
+        const anyVisible = Array.from(boxes).some(box => box.style.display !== 'none');
+        document.getElementById('no-items-message').style.display = anyVisible ? 'none' : 'block';
+    });
+});
+
+// Event listener for product image click to show in modal
+document.querySelectorAll('.product-image').forEach(image => {
+    image.addEventListener('click', function () {
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        modal.style.display = 'flex';
+        modalImage.src = this.src;
+    });
+});
+
+// Close the modal when clicking on the close button
+document.getElementById('close-modal').addEventListener('click', function () {
+    const modal = document.getElementById('image-modal');
+    modal.style.display = 'none';
+});
+
+    </script>
+</body>
+</html>
